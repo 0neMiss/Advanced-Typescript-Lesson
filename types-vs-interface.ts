@@ -36,32 +36,38 @@ let post2: PostInterface = { message: "" };
 const post3: PostInterface = post1;
 const post4: PostType = post2;
 
-const post5: String = post2;
 // They both support extending other interfaces and types.
 // Type aliases do this via intersection types, using the & operator
 // While interfaces have a keyword.
-
-type VideoPostType = { videoUrl: string } & PostType;
+type VideoPostType = { videoUrl: string; publisher: string } & PostType;
 
 interface VideoPostInterface extends PostType {
   caption: string;
+  videoUrl: string;
 }
+
+type HeadlinePost = PostType | VideoPostType;
+
+// One small syntax quirk of types is the interaction between the keyword implements and union types
+class SomeClass implements HeadlinePost {}
 
 let videoPostType: VideoPostType = {
   videoUrl: "video-url.com",
-  message: "",
+  message: "some message",
+  publisher: "some guy on the internet",
 };
 
 let videoPostInterface: VideoPostInterface = {
+  videoUrl: "video-url.com",
   message: "My Message",
   caption: "My video caption",
 };
 
-// One difference that can be noticed is how the error messages are worded.
+// Another difference is how the error messages are worded.
+// Typescript docs say that interface is easier to read but,
 // I feel like its up to personal opinion on which one is easier to read.
 
 videoPostType = videoPostInterface;
-
 videoPostInterface = videoPostType;
 
 // One major difference between type aliases vs interfaces
