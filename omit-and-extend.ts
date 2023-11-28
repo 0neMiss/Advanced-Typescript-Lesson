@@ -1,0 +1,1 @@
+/*One method of making generic types */

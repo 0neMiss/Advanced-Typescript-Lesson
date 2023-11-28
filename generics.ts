@@ -17,6 +17,7 @@ const stringArray = returnTypeAsArray("some string");
 const jordanArray = returnTypeAsArray(jordan);
 
 //Since the types are cast onto the return value no matter what we pass it will keep the type through the return.
+//This way typecript wont let us use methods, or access properties that don't exist on the returns.
 numberArray[0].slice(1, 0);
 stringArray[0].parseInt();
 jordanArray[0].address;

@@ -13,3 +13,5 @@ function swapNumberAndString(numberOrString: string | number): number | string {
 swapNumberAndString(1234).concat("some other text");
 // Since we passed a string here, typescript knows that we will be returning a number because of the 2nd overflow
 swapNumberAndString("123").valueOf();
+
+// This is especially helpful when working with abstraction layers where you may have the same method for many different platforms or environments and want type safety in each of them.
