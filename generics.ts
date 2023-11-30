@@ -8,17 +8,17 @@ function returnTypeAsArray<T>(userType: T): T[] {
   return [userType];
 }
 
-const jordan = { name: "Jordan", age: 28 };
+const person: Person = { name: "Jordan", age: 28 };
 
 const numberArray = returnTypeAsArray(123);
 
 const stringArray = returnTypeAsArray("some string");
 
-const personArray = returnTypeAsArray(jordan);
+const personArray = returnTypeAsArray(person);
 
 //Since the types are cast onto the return value no matter what we pass it will keep the type through the return.
 //This way typecript wont let us use methods, or access properties that don't exist on the returns.
-numberArray[0].slice(1, 0);
+numberArray[0].concat("");
 stringArray[0].parseInt();
 personArray[0].address;
 
